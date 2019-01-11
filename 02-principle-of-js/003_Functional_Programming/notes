@@ -1,0 +1,64 @@
+002 - High Order Functions
+
+
+Slide01
+-------
+Create a function 10 squared
+Takes no input
+Returns 10*10
+
+How do we do it?
+
+Slide02
+-------
+tensquared
+
+function 10squared() {
+  return 10*10;
+}
+tensquared(); //100
+
+Slide03
+-------
+Now let's create a function that returns 9 squared
+
+function ninesquared() {
+  return 9*9;
+}
+ninesquared();
+
+Now 8 squared .. and so on
+
+..
+
+We have a problem - it's getting repetitive, we're breaking our DRY principle
+
+What could we do?
+
+Slide03
+--------
+We can generalize the function
+
+function squareNum(num) {
+  return num*num;
+}
+
+squareNum(10); // 100
+squareNum(9); // 81
+
+001 - Pure Functions
+->Functional programming is a paradigm, it is a way to organize our code at scale
+->Scale is, for the most part, about readability
+
+Functions are first class citizens
+Immutability -> whenever you create a variable but you can't change it
+
+Pure functions:
+-> no side effects (when I run a function its only consequence is the return value)
+-> remember! when you input an object (passed by reference) to a function, when we change that object, we mutate it. Because object is stored in a memory
+
+Slide01
+-------
+Functional programming core features
+(1) Pure functions (no side effects)
+(2) 'higher order functions' - highly valuable tool & often part of the Codesmith interview
