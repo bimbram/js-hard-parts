@@ -1,0 +1,23 @@
+What happens when JavaScript executes (runs) my code?
+-Jawaban gw:
+->JavaScript mengcompile code tersebut kemudian menjalankannya
+
+-Jawaban bener
+->JSengine memprosesnya baris per baris kemudian menjalankannya (interpreted language), tidak di compile terlebih dahulu menjadi file executable
+->Assign data to label and creates in memory
+
+As soon as we start running our code, we create a global execution context
+->Thread of execution (parsing and executing the code line after line)
+->Live memory of variables with data (known as a Global Variable Environment)
+
+Kenapa 'global' karena kita baru saja mulai menjalankan file kita, kita tidak dalam context sebuah fungsi
+
+Global Memory
+1. num is initialized to 'three'
+2. creating the name multiplyBy2 and associating it with function definition
+3. name is initialized to 'Will'
+
+note:
+-there is no elaboration of line 4 and 5 because it is naver called
+-thread execution will never go inside a function if you never called the function
+-as soon as you called the function, then the thread execution started

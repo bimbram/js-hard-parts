@@ -1,0 +1,19 @@
+Global Memory
+1. num is initialized to 'three'
+2. creating the name multiplyBy2 and associating it with function definition
+3. name is initialized to 'Will'
+4. output is initialized to undefined
+5. creating a new local context
+6. assign inputNumber to 4
+8. assign result to inputNumber * 2
+7. return result's value
+8. erased local execution context
+9. back to global execution context
+10. assign output to result's return value (8)
+10. assign newOutput to undefined
+11. creating a new local context
+12. assign inputNumber to 10
+13. assign result to inputNumber * 10
+14. return result's value
+15. erased local execution context
+16. assign newOutput to result's return value (20)
