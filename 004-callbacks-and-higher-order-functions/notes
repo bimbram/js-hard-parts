@@ -1,0 +1,103 @@
+011 - Callback vs Higher-order Functions
+-Higher order function is just a function that can take in another function as one of its parameter
+-A callback function is a function that is being passed to a function as a parameter
+
+Slide01
+-------
+Higher-order functions
+Takes in a function or passes out a function
+
+Just a term to describe these functions - any function that does it we call that - but there's nothing different about them inherently
+
+Slide02
+-------
+So callbaks and higher order functions simplify our code and keep it DRY and they do something even more powerful: they allow us to run asynchronous code
+
+
+010 - First-Class Objects
+-Why JavaScript can pass a function as a parameter?
+-> Because js function is an object, a first class object
+
+-The only difference between function and ordinary object in JS is that a function can be invoked
+
+Slide01
+How was this possible?
+Functions in javascript = first class object
+
+They can co-exist with and can be treated like any other javascript object
+1. assigned to variables and properties of other objects
+2. passed as arguments into functions
+3. returned as values from functions
+
+009 - Q&A- Passing Functions
+-A simple clarification
+
+008 - Deconstructing Generalize Function
+-A simple line by line of the generalize function
+
+007 - Reviewing Generalizing Function
+DRY - don't repeat yourself
+
+Slide01
+--------
+We could generalize our function so that we pass in our specific instruction only when we run the copyArrayAndManipulate function!
+
+function copyArrayAndManipulate(array, instructions) {
+  let output = [];
+  for (let i = 0; i < array.length; i++) {
+    output.push(instructions(array[i]));
+  }
+  return output;
+}
+
+function multiplyBy2(input) {
+  return input * 2;
+}
+
+let result = copyArrayAndManipulate([1,2,3], multiplyBy2);
+
+
+
+006 - Generalizing Functions
+-A simple line by line explanation of the code
+
+005 - Q&A- Const and Let
+-Use 'const' for everything, unless we want to change it - use 'let'
+
+
+004 - Paramaterizing Functions
+-We could generalize our function by adding parameter
+-Simple explanation line by line
+
+003 - Callbacks and Higher-Order Functions Exercises
+Just a simple instruction to http://csbin.io/callbacks
+
+002 - Introducing Pair Programming
+Hard learning => MIT Courseware, MOOCS, Exercism
+Hard learning can make you give up
+When you hit a block, it is where you grow
+Hard learning is where you grow
+
+Slide01
+-------
+Pair programming
+Easer -> Harder
+Researcher -> StackOverflow
+
+
+Slide02
+-------
+
+001 - Setting Up Pair Programming
+Slide01
+-------
+Answer these:
+-I know what a variable is
+-I've created a function
+-I've added a CSS style before
+-I have implemented a sort algorithm (bubble, merge, etc)
+-I can add a method to an object's prototype
+-I understand the event loop in JavaScript
+-I understand 'callback functions'
+-I've built a project in React or Angular
+-I can handle collisions in hash tables
