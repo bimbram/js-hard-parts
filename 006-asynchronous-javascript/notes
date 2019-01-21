@@ -1,0 +1,136 @@
+012 - XMLHttpRequest Correction
+-XMLHttpRequest is also called XHR
+
+011 - XMLHttpRequest Q&A
+
+
+010 - XMLHttpRequest
+-xmlhttprequest (xhr) is a browser feature, not a js feature
+
+009 - Introducing More Browser APIs
+-xmlhttprequest (xhr) is a browser API to let us speak to another network (ex: twitter API)
+
+Slide01
+-------
+There are many things where waiting would block our thread and we use Browser APIs for instead
+-A timer to finish running
+-New information from a server (Ajax)
+-Indication that a portion of the page has loaded
+-User interaction (clicks, mouseovers, drags)
+-Writing/Reading to File system (Node)
+-Writing/reading database (Node)
+
+Slide02
+-------
+Some come back with data. The design of the Browser API we are using determines how we access the returned data
+
+That we were waiting on to run our deferred functionality
+
+function display(data) {
+  console.log(data.post);
+}
+
+$.get('http://twitter.com/willsen/tweet/1', display);
+
+console.log('me first');
+
+008 - Asynchronous Q&A and Pair Programming
+
+007 - Callback Queue & Event Loop
+-Event loop: the process of checking the callback queue and the call stack
+
+Slide01
+-------
+We have two rules for the execution of our asynchronously delayed code
+1. Hold each deferred function in a queue (the Callback Queue) when the API 'completes'
+2. Add the function to the Call stack (i.e. execute the function) ONLY when the call stack is totally empty (Have the Event Loop check this condition)
+
+006 - Callback Queue
+-Callback Queue
+-We only push a unit from the callback queue until the call stack is empty
+
+Slide01
+-------
+But now we are interacting with a world outside of JavaScript
+
+We need a way of predictably understanding how this outside world will interact with our JavaScript execution model. What would happen here?
+
+function printHello() {
+  console.log('Hello');
+}
+
+function blockFor1Sec() {
+  // blocks in the JavaScript thread for 1 second
+}
+
+setTimeout(printHello, 0);
+
+blockFor1Sec();
+
+console.log('Me first!');
+
+005 - Browser API Q&A, Part 2
+
+004 - Resetting Pair Programming
+
+003 - Browser API Q&A
+
+002 - Browser API
+-Web Browser APIs/features
+-Explaining the code line by line
+
+
+001 - Introducing Object-Oriented JavaScript
+-API means there is some functionality or data out there that is not in my application but i can access and interact with it in a clean predictable manner even though in maybe written in a different language or in a different server
+
+Slide01
+-------
+Asynchronicity is the backbone of modern web development in JavaScript
+
+JavaScript is single threaded (one command executing at a time) and has a synchronous execution model (eac line is executed in order the code appears)
+
+So what if we need to wait some time before we can execute certain bits of code? Perhaps we need to wait on fresh data from an API/server request for a time to complete and then execute our code
+
+We have a conundrum - a tension between wanting to delay some code execution but not wanting to block the thread from any further code running while we wait
+
+What do we do? Let's see two examples
+
+Slide02
+-------
+In what order will our console logs occur?
+
+function printHello() {
+  console.log('hello');
+}
+
+setTimeout(printHello, 1000);
+console.log('me first!');
+
+no blocking!?
+
+Slide03
+--------
+In what order will our console logs occur?
+
+function printHello() {
+  console.log('hello');
+}
+
+setTimeout(printHello, 0);
+
+console.log('Me first!');
+
+Our previous model of JavaScript execution is insufficient
+
+Slide04
+-------
+We need to introduce 3 new components of our platform
+
+-Thread of execution
+-Memory/variable environment
+-Call stack
+
+Adding
+-Web browser APIs/Node background threads
+-Callback/Message/Task queue
+-Event loop
