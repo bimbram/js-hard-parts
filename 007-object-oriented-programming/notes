@@ -1,0 +1,272 @@
+016 - Class Syntactic Sugar Q&A
+
+
+015 - OOP Exercise, Part 6
+-Explaining the code line by line
+
+014 - Class Syntactic Sugar
+Slide01
+-------
+We're writing our shared methods separately from our object 'constructor' itself (off in the User.prototype object)
+
+Other languages let us do this all in one place. ES2015 lets us to do so
+
+Slide02
+-------
+The class 'syntactic sugar'
+
+class User {
+  constructor (name, score) {
+    this.name = name;
+    this.score = score;
+  }
+  increment () {
+    this.score++;
+  }
+  login() {
+    console.log('login');
+  }
+}
+
+let user1 = new User('eva', 9);
+
+user1.increment();
+
+
+013 - Object.prototype Q&A
+
+
+012 - OOP Exercise, Part 5
+-Explaining the code one by one
+
+
+Slide01
+-------
+function User(name, score) {
+  this.name = name;
+  this.score = score;
+}
+
+User.prototype.increment = function() {
+  this.score++;
+}
+
+User.prototype.login = function() {
+  console.log('login');
+}
+
+let user1 = new User('Eva', 9)
+
+user1.increment();
+
+011 - Object.prototype
+
+Slide01
+--------
+The new keyword automates a lot of our manual work
+userCreator.prototype.increment = function () {
+  this.score++;
+}
+
+
+010 - new operator Q&A
+-We use the 'object' attribute of a function for
+
+009 - new operator
+Slide01
+-------
+No problems! it's beautiful
+
+Maybe a little long-winded
+
+let newUser = Object.create(functionStore);
+...
+return newUser
+
+Write this every single time - but it's 6 words!
+Super sophisticated but not standard
+
+Slide02
+-------
+Introduce magic keyword new
+
+let user1 = new userCreator('Will', 3)
+
+What happens when we invoke userCreator('Will', 3) without the new keyword
+
+
+Slide02
+-------
+When we call the constructor function with new in fron we automate 2 things:
+1. Create a new user object
+2. Return the new user object
+
+008 - __proto__ Q&A and Pair Programming, Part 2
+-You can't have more than one direct link to the __proto__ property, but you can have more than one parent (subclassing)
+-All of our objects have a __proto__ bond. For example every instance of an array has a __proto__ bond to the Array object
+
+007 - OOP Exercise, Part 4
+-Explaining the code line by line
+-JavaScript always assign the value to 'this' everytime it create a new execution context
+-The 'this' value is the left side of where the function run
+-Every object have a hidden __proto__ property
+-The bond to __proto__ property is called propotype chain
+
+006 - __proto__
+Slide01
+-------
+Store the increment function in just one object and have the interpreter, if it doesn't find the function on user1, look up to that object if it's there
+
+How to make this link?
+
+Slide02
+-------
+Using the prototypal nature of JavaScript
+
+function userCreator(name, score) {
+  let newUser = Object.create(userFunctionStore);
+  newUser.name = name;
+  newUser.score = score;
+  return newUser;
+}
+
+let userFunctionStore = {
+  increment: function() {this.score++}
+  login: function() {console.log('you're loggedin);}
+}
+
+let user1 = userCreator('Will', 3);
+let user2 = userCreator('Tim', 5);
+user1.increment();
+
+
+
+005 - OOP Exercise Q&A and Pair Programming
+-http://csbin.io/oop
+
+Slide01
+-------
+Each time we create a new user we make space in our computer's memory for all our data and functions, But our functions are just copies
+
+Is thre a better way?
+
+004 - OOP Exercise, Part 3
+-Explaining the code line by line
+
+Slide01
+--------
+Generate objects using a function
+function userCreator(name, score) {
+  let newUser = {}
+  newUser.name = name;
+  newUser.score = score;
+  newuser.increment = function() {
+    newUser.score++;
+  }
+  return newUser;
+}
+
+// later
+let user1 = userCreator('Will', 3);
+let user2 = userCreator('Tim', 5);
+user1.increment();
+user2.increment();
+
+
+003 - OOP Exercise, Part 2
+-We only use square bracket notation when we don't know the name of our property
+
+
+Slide01
+-------
+What alternative techniques do we have for creating objects?
+
+Slide02
+-------
+Creating user2 user 'dot notation'
+
+let user2 = {}; // create an empty object
+user2.name = 'Tim'
+user2.score = 6;
+user2.increment = function() {
+  user2.score++;
+};
+
+
+Slide03
+-------
+Creating user3 using Object.create
+
+let user3 = Object.create(null); // create an empty object
+user3.name = 'Eva';
+user3.score = 9;
+user3.increment = function() {
+  user3.score++;
+};
+
+Our code is getting repetitive, we're breaking our DRY principle
+
+And suppose we have millions of users!
+
+What could we do?
+
+002 - OOP Exercise, Part 1
+
+001 - Introducing Object-Oriented JavaScript
+
+Slide01
+-------
+Asynchornous callbacks, Web API< the Callback Queue and Event loop allow us to defer our actions until the 'work' (an API request, timer etc) is completed and continue running our code line by line in the meantime
+
+Asynchronous JavaScript is the backbone of the modern web - letting us build fast 'non-blocking' applications
+
+Slide02
+-------
+OOP - an enormoulsy popular paradigm for structuring our complex code
+-Easy to add features and functionality
+-Performant (efficient in terms of memory)
+-Easy for us and other developers to reason about (a clear structure)
+
+Slide03
+-------
+We're building a quiz game with users
+
+Some of our users
+Name: Will
+Score: 3
+
+Name: Tim
+Score: 6
+
+Functionality
++ Ability to increase score
+
+What would be the best way to store this data and functionality?
+
+Slide04
+-------
+Note we would in reality have a lot of different relevant functionality for our user objects
+-Ability to increase score
+-Ability to decrease score
+-Delete user
+-Log in user
+-Log out user
+-Add avatar
+-get user score
+-... (100s) more applicable functions
+
+Slide05
+-------
+Objects - store functions with their associated data!
+
+let user1 = {
+  name: 'will',
+  score: 3,
+  increment: function() {
+    user1.score++;
+  }
+}
+
+user1.increment();
+
+Encapsulation binding together the data and functions that manipulate the data
